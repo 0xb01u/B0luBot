@@ -1,0 +1,15 @@
+{
+	"name": "BoluBot",
+	"version": "0.1.0",
+	"description": "@ElB0ludo#8913's multi-purpose bot; mainly used to manage Elemental's discord server.",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "ElB0ludo",
+	"license": "GNU GPLv3",
+	"dependencies": {
+		"discord.js": "^11.5.1",
+		"dotenv": "^8.0.0"
+	}
+}
