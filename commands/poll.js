@@ -1,7 +1,5 @@
-// Thanks to RetroDevelopment
-
 const Discord = require('discord.js');
-const Poll = require('../objects/ObjectPoll.js');
+const Poll = require('../objects/ObjectPoll.js');	// Poll object.
 
 require('dotenv').config();
 
@@ -10,13 +8,15 @@ exports.run = async (bot, msg, args) => {
 
 	if (!args[0]) return msg.reply("Uso incorrecto.\nPara recibir ayuda, usa " + process.env.PREFIX + "poll help");
 
+	// Replaces all underscores with spaces.
 	for (let i = 0; i < args.length; i++)
 		args[i] = args[i].replace(/_/g, " ");
 
-	let poll = {}
-	let json = {}
+	let poll = {}	// Poll object.
+	let json = {}	// JSON file to read poll from.
 
 	try {
+		// Poll action:
 		switch (args[0]) {
 			case "help":
 				msg.reply("Uso: " + process.env.PREFIX + "poll modo argumentos\n"
@@ -27,6 +27,7 @@ exports.run = async (bot, msg, args) => {
 			case "vote":
 				if (!args[1]) msg.reply("Uso: " + process.env.PREFIX + "poll vote númeroOpción [númeroPoll]");
 
+				// Refresh poll file.
 				json = "../polls/" + (args[2] ? args[2] : Poll.getNextNumber() - 1) + ".json"
 				delete require.cache[require.resolve(json)];
 
@@ -35,6 +36,7 @@ exports.run = async (bot, msg, args) => {
 				break;
 
 			case "close":
+				// Refresh poll file.
 				json = "../polls/" + (args[1] ? args[1] : Poll.getNextNumber() - 1) + ".json"
 				delete require.cache[require.resolve(json)];
 
@@ -42,10 +44,10 @@ exports.run = async (bot, msg, args) => {
 				poll.close();
 				break;
 
-			default:
+			default:	// Create new poll.
 				let options = [];
 
-				if (args.length < 2)
+				if (args.length < 2)	// Not enough options given.
 					options = ["Sí", "No"];
 				else
 					options = args.slice(1, args.length);
@@ -55,6 +57,7 @@ exports.run = async (bot, msg, args) => {
 				break;
 		}
 
+		// Print poll.
 		sendPoll(poll, msg);
 
 	} catch(e) {
@@ -71,9 +74,12 @@ async function sendPoll(poll, msg) {
 
 		for (i = 0; i < poll.options.length; i++)
 			embed.addField((i + 1) + ": " + poll.options[i], poll.votes[i] +
+				// Vote percentage:
 				" (" + parseInt((poll.votes[i] / (poll.getVotes() ? poll.getVotes() : 1))*100) + "%)");
 
 		let reply = await msg.channel.send(embed);
 
-	// msg.delete({timeout: 50});
+	// msg.delete({timeout: 50});	// Delete message that triggered this poll.
 }
+
+// Thanks to RetroDevelopment

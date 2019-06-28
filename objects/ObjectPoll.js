@@ -1,6 +1,7 @@
 let fs = require('fs');
 
 class Poll {
+	// Constructor from poll name and choices.
 	constructor(name, options) {
 		if (options.length < 2) throw "cantidad de opciones insuficiente."
 		this.number = Poll.getNextNumber();
@@ -12,12 +13,14 @@ class Poll {
 		// TODO: llevar la cuenta de quién ha votado.
 	}
 
+	// Sets the poll as closed.
 	close() {
 		if (!this.open) throw "la encuesta ya está cerrada."
 		this.open = false;
 		this.save();
 	}
 
+	// Votes for a given choice.
 	vote(option) {
 		if (!this.open) throw "encuesta cerrada.";
 		if (option > this.options.length || option < 1) throw "opción inválida.";
@@ -26,9 +29,12 @@ class Poll {
 		this.save();
 	}
 
+	// Total number of votes.
 	getVotes() { return this.votes.reduce((a, b) => a + b, 0); }
+	// Votes for the most voted option.
 	getMaxVote() { return Math.max(...this.votes); }
 
+	// Saves poll as a JSON file.
 	save() {
 		fs.writeFile("./polls/" + this.number + ".json", JSON.stringify(this), function(err) {
 			if (err) {
@@ -38,6 +44,7 @@ class Poll {
 		})
 	}
 
+	// Returns the number for the next poll.
 	static getNextNumber() {
 		let fileList = fs.readdirSync("./polls");
 		for (let i = 0; ; i++) {
@@ -46,6 +53,7 @@ class Poll {
 		}
 	}
 
+	// Creates poll from a JSON file.
 	static fromJSON(obj) {
 		let poll = new Poll("", [0, 0]);
 		Object.assign(poll, obj);
