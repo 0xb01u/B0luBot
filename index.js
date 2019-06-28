@@ -21,7 +21,6 @@ bot.on('message', msg => {
 	let cmd = args.shift().toLowerCase();
 
 	try {
-
 		delete require.cache[require.resolve(`./commands/${cmd}.js`)];
 
 		let commandFile = require(`./commands/${cmd}.js`);
