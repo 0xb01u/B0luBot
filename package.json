@@ -1,6 +1,6 @@
 {
 	"name": "BoluBot",
-	"version": "0.9.0",
+	"version": "1.0.0",
 	"description": "@ElB0ludo#8913's multi-purpose bot; mainly used to manage Elemental's discord server.",
 	"main": "index.js",
 	"scripts": {

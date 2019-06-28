@@ -26,6 +26,9 @@ class Poll {
 		this.save();
 	}
 
+	getVotes() { return this.votes.reduce((a, b) => a + b, 0); }
+	getMaxVote() { return Math.max(...this.votes); }
+
 	save() {
 		fs.writeFile("./polls/" + this.number + ".json", JSON.stringify(this), function(err) {
 			if (err) {

@@ -64,13 +64,14 @@ exports.run = async (bot, msg, args) => {
 
 async function sendPoll(poll, msg) {
 	const embed = new Discord.RichEmbed()
-		.setColor(0xffffff)		
+		.setColor(poll.open ? 0xffffff : 0xff0000)		
 		.setTitle(poll.name + " (#" + poll.number + ")" + (poll.open ? "" : " [CERRADA]"))
 		.setFooter(`Encuesta creada por ${msg.author.username}`)
 		// .setDescription(args.join(' '))
 
 		for (i = 0; i < poll.options.length; i++)
-			embed.addField(i + ": " +poll.options[i], poll.votes[i]);
+			embed.addField((i + 1) + ": " + poll.options[i], poll.votes[i] +
+				" (" + parseInt((poll.votes[i] / (poll.getVotes() ? poll.getVotes() : 1))*100) + "%)");
 
 		let reply = await msg.channel.send(embed);
 
