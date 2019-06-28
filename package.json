@@ -2,9 +2,9 @@
 	"name": "BoluBot",
 	"version": "0.1.0",
 	"description": "@ElB0ludo#8913's multi-purpose bot; mainly used to manage Elemental's discord server.",
-	"main": "main.js",
+	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Test sin especificar\" && exit 1"
 	},
 	"author": "ElB0ludo",
 	"license": "GNU GPLv3",

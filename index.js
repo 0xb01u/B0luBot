@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const token = process.env.TOKEN;
 const PREFIX = process.env.PREFIX;
-const ROLE = process.env.ROLE;
+const ROLE = process.env.MIN_ROLE;
 
 bot.on('ready', () => {
 	console.log('BoluBot online.');
