@@ -6,26 +6,28 @@ exports.run = async (bot, msg, args) => {
 	// Private command.
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
 
+	// Wrong syntax:
 	if (!args[0]) return msg.reply(`Uso: ${process.env.PREFIX}stream usuario1 [&usuario2 &usuario3...] [*descripción]`);
 
-	let usuarios = false;
+	let multistream = false;		
 	let message = `${args[0]}/`;
 
+	// Traverse the array and form the correct message.
 	for (let i = 1; i < args.length; i++) {
-		if (args[i].charAt(0) == '&') {
+		if (args[i].charAt(0) == '&') {		// Add streamers.
 			message += `${args[i].substring(1)}/`
-			usuarios = true;
+			multistream = true;
 		}
-		else if (args[i].charAt(0) == '*') {
+		else if (args[i].charAt(0) == '*') {	// Add description.
 			message += `\n${args[i].substring(1)} ${args.slice(i + 1).reduce((a, b) => `${a} ${b}`)}`;
 		}
 		else break;
 	}
 
-	let host = (usuarios ? "https://multistre.am/" : "https://www.twitch.tv/");
+	let host = (multistream ? "https://multistre.am/" : "https://www.twitch.tv/");
 
 	try {
-
+		// Try to send the message to the streamings channel.
 		let streamChannel = getStreamChannel(msg.channel.guild.channels);
 		await streamChannel.send("Estamos en directo:\n" + host + message);
 
