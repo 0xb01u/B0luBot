@@ -25,10 +25,12 @@ class Poll {
 		if (!this.open) throw "encuesta cerrada.";
 		if (option > this.options.length || option < 1) throw "opción inválida.";
 
-		for (let i = 0; i < this.votes.length; i++)
-			if (this.votes[i].includes(member))
-				this.votes.splice(this.votes.indexOf(member), 1);
-		console.log(this.votes);
+		for (let i = 0; i < this.votes.length; i++) {
+			let e = this.votes[i]
+			if (e.includes(member))
+				if (e.length = 1) this.votes[i] = [];
+				else this.votes.splice(this.votes.indexOf(member), 1);
+		}
 		this.votes[option - 1].push(member);
 		this.save();
 	}
