@@ -50,7 +50,7 @@ class Poll {
 
 	// Saves poll as a JSON file.
 	save() {
-		fs.writeFile("./polls/" + this.number + ".json", JSON.stringify(this), function(err) {
+		fs.writeFile(`./polls/${this.number}.json`, JSON.stringify(this), function(err) {
 			if (err) {
 				console.log(err);
 				throw err;
@@ -62,7 +62,7 @@ class Poll {
 	static getNextNumber() {
 		let fileList = fs.readdirSync("./polls");
 		for (let i = 0; ; i++) {
-			if (!fileList.includes(i + ".json"))
+			if (!fileList.includes(`${i}.json`))
 				return i;
 		}
 	}
