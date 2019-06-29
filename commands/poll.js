@@ -32,7 +32,7 @@ exports.run = async (bot, msg, args) => {
 				delete require.cache[require.resolve(json)];
 
 				poll = Poll.fromJSON(require(json));
-				poll.vote(args[1]);
+				poll.vote(args[1], msg.member.displayName);
 				break;
 
 			case "close":
@@ -61,7 +61,7 @@ exports.run = async (bot, msg, args) => {
 		sendPoll(poll, msg);
 
 	} catch(e) {
-		msg.reply(e);
+		typeof e == 'string' ? msg.reply(e) : console.log(e.stack);
 	}
 }
 
@@ -73,9 +73,9 @@ async function sendPoll(poll, msg) {
 		// .setDescription(args.join(' '))
 
 		for (i = 0; i < poll.options.length; i++)
-			embed.addField((i + 1) + ": " + poll.options[i], poll.votes[i] +
+			embed.addField((i + 1) + ": " + poll.options[i], poll.votes[i].length +
 				// Vote percentage:
-				" (" + parseInt((poll.votes[i] / (poll.getVotes() ? poll.getVotes() : 1))*100) + "%)");
+				" (" + parseInt((poll.votes[i].length / (poll.getVotes() ? poll.getVotes() : 1))*100) + "%)");
 
 		let reply = await msg.channel.send(embed);
 

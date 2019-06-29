@@ -9,7 +9,7 @@ class Poll {
 		this.name = name;
 		this.options = options;
 		this.votes = [];
-		for (const e in options) this.votes.push(0);
+		for (const e in options) this.votes.push([]);
 		// TODO: llevar la cuenta de quién ha votado.
 	}
 
@@ -21,18 +21,28 @@ class Poll {
 	}
 
 	// Votes for a given choice.
-	vote(option) {
+	vote(option, member) {
 		if (!this.open) throw "encuesta cerrada.";
 		if (option > this.options.length || option < 1) throw "opción inválida.";
 
-		this.votes[option - 1]++;
+		for (let i = 0; i < this.votes.length; i++)
+			if (this.votes[i].includes(member))
+				this.votes.splice(this.votes.indexOf(member), 1);
+		console.log(this.votes);
+		this.votes[option - 1].push(member);
 		this.save();
 	}
 
 	// Total number of votes.
-	getVotes() { return this.votes.reduce((a, b) => a + b, 0); }
+	getVotes() {
+		return this.votes.reduce((a, b) => a.length + b.length, 0);
+	}
 	// Votes for the most voted option.
-	getMaxVote() { return Math.max(...this.votes); }
+	getMaxVote() {
+		return Math.max(...this.votes.map(function(x) {
+			x.length;
+		}));
+	}
 
 	// Saves poll as a JSON file.
 	save() {
