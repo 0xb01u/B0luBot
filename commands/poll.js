@@ -19,9 +19,17 @@ exports.run = async (bot, msg, args) => {
 		// Poll action:
 		switch (args[0]) {
 			case "help":
-				msg.reply("Uso: " + process.env.PREFIX + "poll modo argumentos\n"
-					+ "Modos: NOMBRE (crear nueva); vote (votar existente); close (cerrar existente)\n"
-					+ "Argumentos: NOMBRE [Opción1, Opción2, ...]; vote númeroOpción [númeroPoll]; close [númeroPoll]");
+				msg.reply("Uso: " + process.env.PREFIX + "poll modo [argumentos]\n"
+					+ "Modos: NOMBRE (crear nueva); view (ver existente); vote (votar existente); close (cerrar existente)\n"
+					+ "Argumentos: NOMBRE [Opción1, Opción2, ...]; view [númeroPoll]; vote númeroOpción [númeroPoll]; close [númeroPoll]\n"
+					+ "Si no se especifica el número de la encuesta (númeroPoll), se entiende que nos referimos a la última creada.");
+				break;
+
+			case "view":
+				json = "../polls/" + (args[1] ? args[1] : Poll.getNextNumber() - 1) + ".json"
+				delete require.cache[require.resolve(json)];
+
+				poll = Poll.fromJSON(require(json));
 				break;
 
 			case "vote":
@@ -72,12 +80,21 @@ async function sendPoll(poll, msg) {
 		.setFooter(`Encuesta creada por ${msg.author.username}`)
 		// .setDescription(args.join(' '))
 
-		for (i = 0; i < poll.options.length; i++)
-			embed.addField((i + 1) + ": " + poll.options[i], poll.votes[i].length +
-				// Vote percentage:
-				" (" + parseInt((poll.votes[i].length / (poll.getVotes() ? poll.getVotes() : 1))*100) + "%)");
+	for (let i = 0; i < poll.options.length; i++)
+		embed.addField((i + 1) + ": " + poll.options[i], poll.votes[i].length +
+			// Vote percentage:
+			" (" + parseInt((poll.votes[i].length / (poll.getVotes() ? poll.getVotes() : 1))*100) + "%)");
 
-		let reply = await msg.channel.send(embed);
+	let channel = msg.channel;
+	let reply = await msg.channel.send(embed);
+
+	let messages = channel.messages.array();
+	// Remove earlier poll embeds.
+	for (let i = 0; i < messages.length; i++)
+		for (let j = 0; j < messages[i].embeds.length; j++)
+			if (messages[i].embeds[j].title == embed.title
+				&& messages[i] != reply)
+				return messages[i].delete(0);
 
 	// msg.delete({timeout: 50});	// Delete message that triggered this poll.
 }

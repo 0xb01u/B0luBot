@@ -25,12 +25,14 @@ class Poll {
 		if (!this.open) throw "encuesta cerrada.";
 		if (option > this.options.length || option < 1) throw "opción inválida.";
 
+		// Remove the member's previous vite (if any).
 		for (let i = 0; i < this.votes.length; i++) {
 			let e = this.votes[i]
 			if (e.includes(member))
 				if (e.length = 1) this.votes[i] = [];
 				else this.votes.splice(this.votes.indexOf(member), 1);
 		}
+		// Update votes.
 		this.votes[option - 1].push(member);
 		this.save();
 	}
