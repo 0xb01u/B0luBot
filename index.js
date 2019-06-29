@@ -19,7 +19,7 @@ bot.on('message', msg => {
 	if (!msg.member.roles.find(r => r.name === ROLE)) return;
 	if (msg.author.bot) return;
 
-	// Split in an array of arguments.
+	// Split as an array of arguments.
 	let args = msg.content.substring(PREFIX.length).split(" ");
 	let cmd = args.shift().toLowerCase();
 

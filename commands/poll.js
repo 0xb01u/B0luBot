@@ -4,6 +4,7 @@ const Poll = require('../objects/ObjectPoll.js');	// Poll object.
 require('dotenv').config();
 
 exports.run = async (bot, msg, args) => {
+	// Private command.
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
 
 	if (!args[0]) return msg.reply(`Uso incorrecto.\nPara recibir ayuda, usa ${process.env.PREFIX}poll help`);
