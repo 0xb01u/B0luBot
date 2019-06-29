@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const Poll = require('../objects/ObjectPoll.js');	// Poll object.
+const Poll = require('../objects/ObjectPoll.js');	// Poll class.
 
 require('dotenv').config();
 
@@ -8,24 +8,24 @@ exports.run = async (bot, msg, args) => {
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
 
 	// Wrong syntax:
-	if (!args[0]) return msg.reply(`Uso incorrecto.\nPara recibir ayuda, usa ${process.env.PREFIX}poll help`);
+	if (!args[0]) return msg.reply(`uso incorrecto.\nPara recibir ayuda, usa ${process.env.PREFIX}poll help`);
 
 	// Replaces all underscores with spaces.
 	for (let i = 0; i < args.length; i++)
 		args[i] = args[i].replace(/_/g, " ");
 
 	let poll = {}	// Poll object.
-	let json = {}	// JSON file to read poll from.
-	let server = `${msg.channel.guild.name}#${msg.channel.guild.id}`	// Server identifier.	
+	let server = `${msg.channel.guild.name}#${msg.channel.guild.id}`	// Server identifier.
 	let last = Poll.getNextNumber(server) - 1;	// Last poll in the server.
 	let indexPath = `./polls/${server}/`;
 	let requirePath = `.${indexPath}`;
+	let json = {}	// JSON file path to read poll from.
 
 	try {
 		// Poll action:
 		switch (args[0]) {
 			case "help":
-				msg.reply(`Uso: ${process.env.PREFIX}poll modo [argumentos]\n`
+				msg.reply(`uso: ${process.env.PREFIX}poll modo [argumentos]\n`
 					+ "Modos:\n"
 					+ `${process.env.PREFIX}poll NOMBRE -> Crea una nueva encuesta con el nombre especificado.\n`
 					+ `${process.env.PREFIX}poll view [numPoll] -> Muestra al encuesta número numPoll.\n`
@@ -49,7 +49,8 @@ exports.run = async (bot, msg, args) => {
 				break;
 
 			case "vote":
-				if (!args[1]) msg.reply(`Uso: ${process.env.PREFIX} poll vote númeroOpción [númeroPoll]`);
+				if (isNaN(parseInt(args[1])))
+					throw `uso: ${process.env.PREFIX} pollvote númeroOpción [númeroPoll]`;
 
 				if (last < 0) throw "no hay encuestas para votar.";
 
@@ -108,17 +109,23 @@ exports.run = async (bot, msg, args) => {
 		// Deletes the user's message and the reply after 10s.
 		if (typeof e == 'string') {
 			let reply = await msg.reply(e);
+			reply.delete(10000);
 			msg.delete(10000);
-			msg.channel.lastMessage.delete(10000);
 		}
-		else console.log(e.stack);
+		else {
+			console.log(e.stack);
+			let reply = await msg.reply("error al acceder a las encuestas.");
+			reply.delete(10000);
+			msg.delete(10000);
+		}
 	}
 }
 
+// Poll formater.
 async function sendPoll(poll, msg) {
 	const embed = new Discord.RichEmbed()
 		.setColor(poll.open ? 0xffffff : 0xff0000)		
-		.setTitle(`(# ${poll.number}) ${poll.name}` + (poll.open ? "" : " [CERRADA]"));
+		.setTitle(`(# ${poll.number + 1}) ${poll.name}` + (poll.open ? "" : " [CERRADA]"));
 		// .setFooter(`Encuesta creada por ${msg.author.username}`)
 		// .setDescription(args.join(' '))
 

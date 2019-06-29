@@ -4,7 +4,7 @@ class Poll {
 	// Constructor from poll name and choices.
 	constructor(name, options, server) {
 		if (options.length < 2) throw "cantidad de opciones insuficiente."
-		this.number = Poll.getNextNumber();
+		this.number = Poll.getNextNumber(server);
 		this.open = true;
 		this.name = name;
 		this.options = options;
@@ -57,12 +57,16 @@ class Poll {
 				console.log(err);
 				throw err;
 			}
-		})
+		});
 	}
 
 	// Returns the number for the next poll.
-	static getNextNumber(server) {
-		let fileList = fs.readdirSync(`./polls/${server}`);
+	static getNextNumber(server) {	
+		let dir = `./polls/${server}`;
+		if (!fs.existsSync(dir))
+			fs.mkdirSync(dir);
+
+		let fileList = fs.readdirSync(dir);
 		for (let i = 0; ; i++) {
 			if (!fileList.includes(`${i}.json`))
 				return i;
@@ -70,9 +74,9 @@ class Poll {
 	}
 
 	// Creates poll from a JSON file.
-	static fromJSON(obj) {
-		let poll = new Poll("", [0, 0]);
-		Object.assign(poll, obj);
+	static fromJSON(json) {
+		let poll = new Poll("", [0, 0], ".temp");
+		Object.assign(poll, json);
 		return poll;
 	}
 };
