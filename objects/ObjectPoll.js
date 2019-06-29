@@ -39,7 +39,7 @@ class Poll {
 
 	// Total number of votes.
 	getVotes() {
-		return this.votes.reduce((a, b) => a.length + b.length, 0);
+		return this.votes.reduce((a, b) => a.length + b.length);
 	}
 	// Votes for the most voted option.
 	getMaxVote() {
