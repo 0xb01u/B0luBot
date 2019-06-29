@@ -143,11 +143,11 @@ exports.run = async (bot, msg, args) => {
 async function sendList(tdl, msg) {
 	const embed = new Discord.RichEmbed()
 		.setColor(0x00ff80)
-		.setTitle("Todo list");
+		.setTitle("Tareas por hacer:");
 
 	let i = 1;
 	for (task of tdl.tasks)
-		embed.addField(`${i++}: ${task.name}`, `Prioridad: ${task.prio}`);
+		embed.addField(`${i++}.- ${task.name}`, `Prioridad: ${task.prio}`);
 
 	let reply = await msg.channel.send(embed);
 	// Remove earlier messages?

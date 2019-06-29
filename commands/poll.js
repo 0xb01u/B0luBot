@@ -125,12 +125,12 @@ exports.run = async (bot, msg, args) => {
 async function sendPoll(poll, msg) {
 	const embed = new Discord.RichEmbed()
 		.setColor(poll.open ? 0xffffff : 0xff0000)		
-		.setTitle(`(# ${poll.number + 1}) ${poll.name}` + (poll.open ? "" : " [CERRADA]"));
+		.setTitle(`(# ${poll.number + 1}) ${poll.name}` + (poll.open ? ":" : " [CERRADA]:"));
 		// .setFooter(`Encuesta creada por ${msg.author.username}`)
 		// .setDescription(args.join(' '))
 
 	for (let i = 0; i < poll.options.length; i++)
-		embed.addField(`${(i + 1)}: ${poll.options[i]}`, `${poll.votes[i].length}`
+		embed.addField(`${(i + 1)}.- ${poll.options[i]}`, `${poll.votes[i].length}`
 			// Vote percentage:
 			+ ` (${parseInt((poll.votes[i].length / (poll.getVotes() ? poll.getVotes() : 1))*100)}%)`);
 
