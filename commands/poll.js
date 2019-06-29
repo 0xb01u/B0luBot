@@ -4,7 +4,7 @@ const Poll = require('../objects/ObjectPoll.js');	// Poll object.
 require('dotenv').config();
 
 exports.run = async (bot, msg, args) => {
-	if (!msg.member.roles.find(r => r.name === process.env.MIN_ROLE)) return;
+	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
 
 	if (!args[0]) return msg.reply(`Uso incorrecto.\nPara recibir ayuda, usa ${process.env.PREFIX}poll help`);
 
@@ -14,7 +14,10 @@ exports.run = async (bot, msg, args) => {
 
 	let poll = {}	// Poll object.
 	let json = {}	// JSON file to read poll from.
-	let last = Poll.getNextNumber() - 1;	// Last poll in the server.
+	let server = `${msg.channel.guild.name}#${msg.channel.guild.id}`	// Server identifier.	
+	let last = Poll.getNextNumber(server) - 1;	// Last poll in the server.
+	let indexPath = `./polls/${server}/`;
+	let requirePath = `.${indexPath}`;
 
 	try {
 		// Poll action:
@@ -37,7 +40,7 @@ exports.run = async (bot, msg, args) => {
 			case "view":
 				if (last < 0) throw "no hay encuestas para ver.";
 
-				json = "../polls/" + (args[1] ? args[1] : last) + ".json";
+				json = requirePath + (args[1] ? args[1] : last) + ".json";
 				delete require.cache[require.resolve(json)];
 
 				poll = Poll.fromJSON(require(json));
@@ -49,7 +52,7 @@ exports.run = async (bot, msg, args) => {
 				if (last < 0) throw "no hay encuestas para votar.";
 
 				// Refresh poll file.
-				json = "../polls/" + (args[2] ? args[2] : last) + ".json";
+				json = requirePath + (args[2] ? args[2] : last) + ".json";
 				delete require.cache[require.resolve(json)];
 
 				poll = Poll.fromJSON(require(json));
@@ -60,7 +63,7 @@ exports.run = async (bot, msg, args) => {
 				if (last < 0) throw "no hay encuestas para cerrar.";
 
 				// Refresh poll file.
-				json = "../polls/" + (args[1] ? args[1] : Poll.getNextNumber() - 1) + ".json";
+				json = requirePath + (args[1] ? args[1] : Poll.getNextNumber(server) - 1) + ".json";
 				delete require.cache[require.resolve(json)];
 
 				poll = Poll.fromJSON(require(json));
@@ -70,14 +73,14 @@ exports.run = async (bot, msg, args) => {
 			case "purge":	// Permanently delete polls from the system.
 				let fs = require('fs');
 
-				let total = Poll.getNextNumber();
+				let total = Poll.getNextNumber(server);
 				if (args[1] < 1 || args[1] > total)
 					throw "no se puede eliminar esa cantidad de ecuestas.";
 
 				// If no args are given, all polls are deleted.
 				let del = args[1] ? args[1] : total;
 				for (let i = total - 1; i >= total - del; i--)
-					fs.unlink(`./polls/${i}.json`, function (err) {
+					fs.unlink(`${indexPath}${i}.json`, function (err) {
 						if (err) throw err;
 					})
 				return msg.channel.send(`Eliminadas las últimas ${del} encuestas.`);
@@ -90,7 +93,7 @@ exports.run = async (bot, msg, args) => {
 				else
 					options = args.slice(1, args.length);
 
-				poll = new Poll(args[0], options);
+				poll = new Poll(args[0], options, server);
 				poll.save();
 				break;
 		}

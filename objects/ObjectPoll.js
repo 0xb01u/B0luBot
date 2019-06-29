@@ -2,7 +2,7 @@ let fs = require('fs');
 
 class Poll {
 	// Constructor from poll name and choices.
-	constructor(name, options) {
+	constructor(name, options, server) {
 		if (options.length < 2) throw "cantidad de opciones insuficiente."
 		this.number = Poll.getNextNumber();
 		this.open = true;
@@ -10,7 +10,7 @@ class Poll {
 		this.options = options;
 		this.votes = [];
 		for (const e in options) this.votes.push([]);
-		// TODO: llevar la cuenta de quién ha votado.
+		this.server = server;
 	}
 
 	// Sets the poll as closed.
@@ -50,7 +50,9 @@ class Poll {
 
 	// Saves poll as a JSON file.
 	save() {
-		fs.writeFile(`./polls/${this.number}.json`, JSON.stringify(this), function(err) {
+		let dir = `./polls/${this.server}`;
+		if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+		fs.writeFile(`${dir}/${this.number}.json`, JSON.stringify(this), function(err) {
 			if (err) {
 				console.log(err);
 				throw err;
@@ -59,8 +61,8 @@ class Poll {
 	}
 
 	// Returns the number for the next poll.
-	static getNextNumber() {
-		let fileList = fs.readdirSync("./polls");
+	static getNextNumber(server) {
+		let fileList = fs.readdirSync(`./polls/${server}`);
 		for (let i = 0; ; i++) {
 			if (!fileList.includes(`${i}.json`))
 				return i;
