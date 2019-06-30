@@ -3,7 +3,7 @@ class Task {
 		this.name = task;
 		this.prio = 0;
 		this.date = new Date();
-		this.asignee = [];
+		this.assignee = [];
 		this.details = "";
 	}
 
@@ -12,14 +12,14 @@ class Task {
 	}
 
 	addAsignee(userName) {
-		if (this.asignee.includes(userName)) throw "ya estás asignado a esa tarea."
-		this.asignee.push(userName);
+		if (this.assignee.includes(userName)) throw "ya estás asignado a esa tarea."
+		this.assignee.push(userName);
 	}
 
 	removeAsignee(userName) {
-		if (!this.asignee.includes(userName)) throw "no estás asignado a esa tarea."
-		if (this.asignee.length == 1) this.asignee = [];
-		else this.asignee.splice(this.asignee.indexOf(userName), 1);
+		if (!this.assignee.includes(userName)) throw "no estás asignado a esa tarea."
+		if (this.assignee.length == 1) this.assignee = [];
+		else this.assignee.splice(this.assignee.indexOf(userName), 1);
 	}
 
 	setDetails(details) {

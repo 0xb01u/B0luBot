@@ -109,9 +109,11 @@ exports.run = async (bot, msg, args) => {
 				break;
 
 			default:
-				// Create or load list:
+				// Check if ../tdl exist
 				let fs = require('fs');
+				if (!fs.existsSync("../tdl")) fs.mkdirSync("../tdl");
 
+				// Create or load list:
 				if (fs.existsSync(json.substring(1, json.length)))	// The path is different (current folder).
 					tdl = TDL.fromJSON(require(json));
 				else tdl = new TDL(server);
@@ -161,11 +163,13 @@ async function sendTask(task, msg) {
 		.addField(`Prioridad`, `${task.prio}`)
 		.addField(`Fecha de inclusión`, `${task.stringDate()}`);
 
+	// Details line is only shown if there are any.
 	if (task.details.length > 0)
 		embed.addField(`Detalles`, `${task.details}`);
 
-	if (task.asignee.length > 0) {
-		embed.addField(`Encargados`, `${task.asignee.toString()}`);
+	// Assignees line is only shown if there are any,
+	if (task.assignee.length > 0) {
+		embed.addField(`Encargados`, `${task.assignee.toString()}`);
 	}
 
 	let reply = await msg.channel.send(embed);

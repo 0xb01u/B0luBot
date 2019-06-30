@@ -89,6 +89,10 @@ exports.run = async (bot, msg, args) => {
 				return msg.channel.send(`Eliminadas las últimas ${del} encuestas.`);
 
 			default:	// Create new poll.
+				// Check if ../polls exist
+				let fs = require('fs');
+				if (!fs.existsSync("../polls")) fs.mkdirSync("../polls");
+
 				let options = [];
 
 				if (args.length < 2)	// Not enough options given.
