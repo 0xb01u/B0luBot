@@ -12,8 +12,8 @@ exports.run = async (bot, msg, args) => {
 	let json = `../tdl/${server}.json`	// JSON file path to read list from.
 
 	try {;
-
-		if (!args[0]) return sendList(TDL.fromJSON(require(json)), msg);
+		// Tdl action:
+		if (!args[0]) return sendList(TDL.fromJSON(require(json)), msg);	// Show tdl.
 
 		switch (args[0]) {
 			case "help":

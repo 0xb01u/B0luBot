@@ -6,6 +6,7 @@ exports.run = async (bot, msg, args) => {
 	// Private command.
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
 
+	// Wrong syntax:
 	if (!args[0] || (args[0].charAt(0) == "#" && !args[1])) {
 		msg.delete();
 		let reply = msg.reply(`uso: ${process.env.PREFIX}say [canal] mensaje.`);
@@ -14,6 +15,7 @@ exports.run = async (bot, msg, args) => {
 	console.log(msg.channel.id);
 
 	try {
+		// Decide to which channel send the message:
 		let channel = msg.channel;
 		let text = args[0];
 		if (args[0].startsWith("<#") && args[0].endsWith(">")) {
@@ -21,6 +23,7 @@ exports.run = async (bot, msg, args) => {
 			text = args.slice(1, args.length);
 		}
 
+		// Delete original message and send as bot.
 		msg.delete();
 		channel.send(args.reduce((a, b) => `${a} ${b}`));
 
