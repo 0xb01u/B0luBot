@@ -10,8 +10,9 @@ exports.run = async (bot, msg, args) => {
 
 	msg.reply(`Comandos privados:\n`
 		+ `${P}list -> Lista de comandos.\n`
+		+ `${P}say -> El bot envía el mensaje especificado al canal especificado.\n`
 		+ `${P}poll -> Gesión de encuestas.\n`
-		+ `${P}stream -> Creación de mensajes de streams.\n`
 		+ `${P}serverinfo -> Mensaje (privado) de información del servidor.\n`
+		+ `${P}stream -> Creación de mensajes de streams.\n`
 		+ `${P}tdl -> Gestión de lista de cosas por hacer.\n`);
 }
