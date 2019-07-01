@@ -5,6 +5,7 @@ exports.run = async (bot, msg, args) => {
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
 
 	msg.reply(`Comandos privados:\n`
+		+ `${P}admin -> Envía un mensaje privado a los administradores del servidor.\n`
 		+ `${P}list -> Lista de comandos.\n`
 		+ `${P}say -> El bot envía el mensaje especificado al canal especificado.\n`
 		+ `${P}poll -> Gesión de encuestas.\n`
