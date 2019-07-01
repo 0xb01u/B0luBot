@@ -15,7 +15,7 @@ exports.run = async (bot, msg, args) => {
 		let text = args[0];
 		if (args[0].startsWith("<#") && args[0].endsWith(">")) {
 			channel = getDestChannel(msg.channel.guild.channels.array(), args[0].slice(2, args[0].length - 1));
-			text = args.slice(1, args.length);
+			text = args.shift();
 		}
 
 		// Delete original message and send as bot.
