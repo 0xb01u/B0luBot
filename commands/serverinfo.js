@@ -1,7 +1,3 @@
-const Discord = require('discord.js');
-
-require('dotenv').config();
-
 exports.run = async (bot, msg, args) => {
 	// Private command.
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
@@ -32,5 +28,5 @@ function getInfoChannel(channels) {
 	for (let c of channels.array())
 		if (c.name == process.env.INFO_CHANNEL_PRIV)
 			return c;
-	throw "no se ha encontrado un canal de información adecuado.";
+	throw "no se ha encontrado el canal de información.";
 }

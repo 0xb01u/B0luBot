@@ -1,10 +1,10 @@
 {
 	"name": "B0luBot",
-	"version": "1.1.0",
+	"version": "1.2.2",
 	"description": "@ElB0ludo#8913's multi-purpose bot; mainly used to manage Elemental's discord server.",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Test sin especificar\" && exit 1"
+		"test": "echo \"Unspecified test\" && exit 1"
 	},
 	"author": "ElB0ludo",
 	"license": "GNU GPLv3",

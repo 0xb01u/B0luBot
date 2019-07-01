@@ -1,7 +1,3 @@
-const Discord = require('discord.js');
-
-require('dotenv').config();
-
 exports.run = async (bot, msg, args) => {
 	// Private command.
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
@@ -12,7 +8,6 @@ exports.run = async (bot, msg, args) => {
 		let reply = msg.reply(`uso: ${process.env.PREFIX}say [canal] mensaje.`);
 		return reply.delete(10000)
 	}
-	console.log(msg.channel.id);
 
 	try {
 		// Decide to which channel send the message:
@@ -38,7 +33,7 @@ exports.run = async (bot, msg, args) => {
 		// In case it's an unknown error:
 		else {
 			console.log(e.stack);
-			let reply = await msg.reply("error al acceder a la lista de tareas.");
+			let reply = await msg.reply("error al enviar el mensaje.");
 			msg.delete(0);
 			reply.delete(10000);
 		}

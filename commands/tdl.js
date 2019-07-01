@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const TDL = require('../objects/ObjectTDL.js');	// To-do list class.
 
-require('dotenv').config();
-
 exports.run = async (bot, msg, args) => {
 	// Private command.
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;

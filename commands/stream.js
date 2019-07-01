@@ -1,7 +1,3 @@
-const Discord = require('discord.js');
-
-require('dotenv').config();
-
 exports.run = async (bot, msg, args) => {
 	// Private command.
 	if (!msg.member.roles.find(r => r.name === process.env.ROLE)) return;
