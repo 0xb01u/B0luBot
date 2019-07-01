@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const Poll = require('../objects/ObjectPoll.js');	// Poll class.
-
-require('dotenv').config();
+const fs = require('fs');
 
 exports.run = async (bot, msg, args) => {
 	// Private command.
@@ -13,6 +12,9 @@ exports.run = async (bot, msg, args) => {
 	// Replaces all underscores with spaces.
 	for (let i = 0; i < args.length; i++)
 		args[i] = args[i].replace(/_/g, " ");
+
+	// Check if ../polls exist
+	if (!fs.existsSync("./polls")) fs.mkdirSync("./polls");
 
 	let poll = {}	// Poll object.
 	let server = `${msg.channel.guild.name}#${msg.channel.guild.id}`	// Server identifier.
@@ -74,8 +76,6 @@ exports.run = async (bot, msg, args) => {
 				break;
 
 			case "purge":	// Permanently delete polls from the system.
-				let fs = require('fs');
-
 				let total = Poll.getNextNumber(server);
 				if (args[1] < 1 || args[1] > total)
 					throw "no se puede eliminar esa cantidad de ecuestas.";
@@ -89,10 +89,6 @@ exports.run = async (bot, msg, args) => {
 				return msg.channel.send(`Eliminadas las últimas ${del} encuestas.`);
 
 			default:	// Create new poll.
-				// Check if ../polls exist
-				let fs = require('fs');
-				if (!fs.existsSync("../polls")) fs.mkdirSync("../polls");
-
 				let options = [];
 
 				if (args.length < 2)	// Not enough options given.

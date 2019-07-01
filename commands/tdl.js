@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const TDL = require('../objects/ObjectTDL.js');	// To-do list class.
+const fs = require('fs');
 
 exports.run = async (bot, msg, args) => {
 	// Private command.
@@ -8,6 +9,9 @@ exports.run = async (bot, msg, args) => {
 	let tdl = {}	// To-do list object.
 	let server = `${msg.channel.guild.name}#${msg.channel.guild.id}`	// Server identifier.
 	let json = `../tdl/${server}.json`	// JSON file path to read list from.
+
+	// Check if ../tdl exist
+	if (!fs.existsSync("./tdl")) fs.mkdirSync("./tdl");
 
 	try {;
 		// Tdl action:
@@ -107,10 +111,6 @@ exports.run = async (bot, msg, args) => {
 				break;
 
 			default:
-				// Check if ../tdl exist
-				let fs = require('fs');
-				if (!fs.existsSync("../tdl")) fs.mkdirSync("../tdl");
-
 				// Create or load list:
 				if (fs.existsSync(json.substring(1, json.length)))	// The path is different (current folder).
 					tdl = TDL.fromJSON(require(json));
