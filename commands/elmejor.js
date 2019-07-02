@@ -1,4 +1,4 @@
-exports.run => async (bot, msg, args) => {
+exports.run = async (bot, msg, args) => {
 	// Public command.
 
 	// Random number in [1, 10]:
