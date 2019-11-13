@@ -1,0 +1,26 @@
+{
+	"misprio":"use: $PREFIX$tdl prio <taskNum> <newPriority>",
+	"mistask":"wrong task number.",
+	"joinmsg":"Task number $TASKNUM$ assigned to $AUTHOR$.",
+	"disjoinmsg":"Task number $TASKNUM$ no longer assigned to $AUTHOR$.",
+	"detailmsg":"Details for task number $TASKNUN$ updated.",
+	"remmsg":"Task deleted.",
+	"remAllmsg":"All tasks deleted.",
+	"catchmsg":"error trying to access the to-do list.",
+	"listname":"To-do list:",
+	"listprio":"Priority: $PRIORITY$",
+	"taskprio":"Priority",
+	"taskdate":"Added on",
+	"taskdetails":"Details",
+	"taskassignees":"Assigned to",
+	"brief":"Create and manage a to-do list.",
+	"man":"Use: $PREFIX$tdl [task name].\nAddas a new task with the specified name and priority 0 to the to-do list. Sends a message with the updated list.\nIf no task name is specified, just sends a message with the to-do list.\nThese command options are also present:\n$PREFIX$tdl view <taskNum> -> Shows in detail the task number __taskNum__.\n$PREFIX$tdl prio <taskNum> <newPriority> -> Changes the priority of the task number __taskNum__ to __newPriority__.\n$PREFIX$tdl join <taskNum> -> Assigns the changer to the task number __taskNum__.\n$PREFIX$tdl disjoin <taskNum> -> Disassigns the sender to the task number __taskNum__.\n$PREFIX$tdl detail <taskNum> [details] -> Updates the details of the task number __taskNum__ to __details__.\n$PREFIX$tdl remove <taskNum> -> Removes the task number __taskNum__ from the list.\n$PREFIX$tdl removeAll -> Removes all the tasks from the list.\n\nTo view the manual for an option, use $PREFIX$tdl <modo>",
+	"man_view":"Use: $PREFIX$tdl view <taskNum>\nSends a message with the details of the task number __taskNum__, including priority, the date it was added on, details and people in charge. If there are no details or no people in charge of the task, those fields aren't shown.",
+	"man_prio":"Use: $PREFIX$tdl prio <taskNum> <newPriority>\nChanges the task number __taskNum__'s priority to __newPriority__, and sends a message with the updated list.\nThe tasks in the list are automatically sorted from highest to lowest priority.",
+	"man_join":"Use: $PREFIX$tdl join <taskNum>\nAssigns the sender to the task number __taskNum__. Various users can be assigned to the same task.",
+	"man_disjoin":"Use: $PREDIX$tdl disjoin <taskNum>\nDisassigns the sender from the task number __taskNum__.",
+	"man_detail":"Use: $PREFIX$tdl detail <taskNum> [details].\nChanges the details of the task number __taskNum__ to the specified ones. If no details are specified, the details for the task are removed.",
+	"man_remove":"Use: $PREFIX$tdl remove <taskNum>\nRemoves the task number __taskNum__ from the list.",
+	"man_removeAll":"Use: $PREFIX$tdl removeAll\nRemoves all tasks from the list."
+
+}

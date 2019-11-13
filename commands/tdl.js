@@ -44,7 +44,7 @@ exports.run = async (bot, msg, args) => {
 
 			case "prio":
 				if (isNaN(parseInt(args[1]) + parseInt(args[2])))
-					throw `uso: /${process.env.PREFIX}tdl prio numTarea nuevaPrioridad.`
+					throw `uso: ${process.env.PREFIX}tdl prio numTarea nuevaPrioridad.`
 
 				tdl = TDL.fromJSON(require(json));
 				if (args[1] < 1 || args[1] > tdl.tasks.length)

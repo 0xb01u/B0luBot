@@ -1,0 +1,7 @@
+{
+	"channel_not_config":"no se ha especificado el canal de información en la configuración.",
+	"channel_not_found":"no se ha encontrado el canal de información configurado ($PRIV_INFO_CHANNEL$).",
+	"message_not_found":"no se ha encontrado un mensaje de información adecuado en el canal de información.\nPara configurar un mensaje como mensaje de información, debe empezar por la línea \"INFO:\" y estar anclado en el canal de información configurado.",
+	"brief":"Muestra la información privada del servidor.",
+	"man":"Uso: $PREFIX$serverinfo\nMuestra la información privada del servidor. Esta información es configurable.\nPara configurar un mensaje de información privada, se debe enviar y anclar un mensaje que empiece por la línea \"INFO:\" en el canal de información privado que se haya configurado. El bot enviará un mensaje con todo lo que aparezca en ese mensaje debajo de la línea \"INFO:\" al canal en que se ejecute el comando.\nPara configurar un canal de información privado, usar $PREFIX$config priv_info_channel."
+}

@@ -1,0 +1,9 @@
+{
+	"misuse":"uso: $PREFIX$admin <mensaje a enviar a los administradores>.",
+	"botmsg":"@here, $AUTHOR$ dice: $USER_MSG$",
+	"catchmsg":"error al enviar el mensaje.",
+	"channel_not_config":"no se ha especificado el canal de administradores en la configuración",
+	"channel_not_found":"no se ha encontrado el canal de administradores configurado ($ADMIN_CHANNEL$).",
+	"brief":"Envía un mensaje al canal de los administradores.",
+	"man":"Uso: $PREFIX$admin <mensaje a enviar a los administradores>.\nEl bot reenviará tu mensaje al canal de los administradores y eliminará el original.\nLa intención del comando es poder comunicarse con los administradores sin que los demás usuarios del servidor lo sepan. El mensaje NO es anónimo.\nUsar con cuidado."
+}

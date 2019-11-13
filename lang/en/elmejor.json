@@ -1,0 +1,13 @@
+{
+	"firstmsg":"$MEME_USER$ is the best",
+	"secondmsg":"$MEME_USER$ is the most.",
+	"thirdmsg":"$MEME_USER$ is life.",
+	"fourthmsg":"$MEME_USER$ is love.",
+	"fifthmsg":"All hail $MEME_USER$.",
+	"sixthmsg":"Thank you for everything, forgive us for nothing $MEME_USER$.",
+	"seventhmsg":"Have I already said how cool $MEME_USER$ is?",
+	"randomsg":"Actually $RANDO$ is the best.",
+	"replymsg":"You are the very best! $AUTHRO$.",
+	"brief":"Meme command to spam someone with positive messages.",
+	"man":"Have you ever wondered who's the best?"
+}

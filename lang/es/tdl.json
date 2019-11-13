@@ -1,0 +1,26 @@
+{
+	"misprio":"uso: $PREFIX$tdl prio <numTarea> <nuevaPrioridad>",
+	"mistask":"número de tarea incorrecto.",
+	"joinmsg":"Añadidio $AUTHOR$ como encargado de la tarea $TASKNUM$.",
+	"disjoinmsg":"Eliminado $AUTHOR$ como encargado de la tarea $TASKNUM$.",
+	"detailmsg":"Actualizados los detalles de la tarea $TASKNUN$.",
+	"remmsg":"Tarea eliminada.",
+	"remAllmsg":"Todas las tareas eliminadas.",
+	"catchmsg":"error al acceder a la lista de tareas.",
+	"listname":"Tareas por hacer:",
+	"listprio":"Prioridad: $PRIORITY$",
+	"taskprio":"Prioridad",
+	"taskdate":"Fecha de inclusión",
+	"taskdetails":"Detalles",
+	"taskassignees":"Encargados",
+	"brief":"Crea y gestiona una lista de tareas por hacer.",
+	"man":"Uso: $PREFIX$tdl [nombre de la tarea].\nAñade una nueva tarea con el nombre especificado y prioridad 0 a la lista de tareas por hacer. Se envia un mensaje con la lista de tareas actualizada.\nSi no se especifica __numTarea__, simplemente se envia un mensajé con la lista de tareas por hacer.\nTambién existen los siguientes modos:\n$PREFIX$tdl view <numTarea> -> Muestra en detalle la tarea número __numTarea__.\n$PREFIX$tdl prio <numTarea> <nuevaPrioridad> -> Cambia la prioridad de la tarea __numTarea__ por __nuevaPrioridad__.\n$PREFIX$tdl join <numTarea> -> Te asigna como encargado de la tarea número __numTarea__.\n$PREFIX$tdl disjoin <numTarea> -> Te elimina como encargado de la tarea número __numTarea__.\n$PREFIX$tdl detail <numTarea> [detalles] -> Cambia los detalles de la tarea número __numTarea__ por __detalles__.\n$PREFIX$tdl remove <numTarea> -> Elimina la tarea número __numTarea__ de la lista.\n$PREFIX$tdl removeAll -> Elimina todas las tareas de la lista.\n\nPara ver el manual de uno de estos modos, usar $PREFIX$tdl <modo>",
+	"man_view":"Uso: $PREFIX$tdl view <numTarea>\nEnvía un mensaje con los datos detallados de la tarea número __numTarea__, incluyendo prioridad, fecha de inclusión, detalles y encargados. De no haber encargados o detalles de la tarea, esos campos no se incluyen.",
+	"man_prio":"Uso: $PREFIX$tdl prio <numTarea> <nuevaPrioridad>\nCambia la prioridad de la tarea número __numTarea__ de la lista de tareas por hacer por __nuevaPrioridad__, y envía un mensaje con la lista actualizada.\nLas tareas de la lista se ordenan automáticamente de mayor a menor prioridad.",
+	"man_join":"Uso: $PREFIX$tdl join <numTarea>\nAsigna a quien utilice el comando como encargado de la tarea número __numTarea__. Puede haber varios encargados por tarea.",
+	"man_disjoin":"Uso: $PREDIX$tdl disjoin <numTarea>\nElimina a quien utilice el comando de ser encargado de la tarea número __numTarea__.",
+	"man_detail":"Uso: $PREFIX$tdl detail <numTarea> [detalles].\nCambia los detalles de la tarea número __numTarea__ por los especificados. De no especificar detalles, se eliminan los que hubiera antes.",
+	"man_remove":"Uso: $PREFIX$tdl remove <numTarea>\nSe elimina la tarea número __numTarea__ de la lista de tareas por hacer.",
+	"man_removeAll":"Uso: $PREFIX$tdl removeAll\nSe eliminan todas las tareas de la lista de tareas por hacer."
+
+}

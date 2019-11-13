@@ -1,0 +1,23 @@
+{
+	"misuse":"incorrect use. For help using this command, use $PREFIX$poll help",
+	"noview":"no viewable polls.",
+	"misvote":"use: $PREFIX$poll vote <optionNumber> [pollNumber]",
+	"novote":"no votable polls.",
+	"noclose":"no closeable polls.",
+	"mistimer":"use: $PREFIX$poll timer <time>[d/h/m].",
+	"timerclosed":"the last poll is already closed.",
+	"timerend":"Poll closed:",
+	"mispurge":"can't delete that many polls.",
+	"purged":"Deleted the last $DELETED$ polls.",
+	"default1":"Yes",
+	"default2":"No",
+	"catchmsg":"error trying to access the specified poll.",
+	"embedclosed":"[CLOSED]",
+	"brief":"Create, vote and manage polls.", 
+	"man":"Use: $PREFIX$poll <poll name> [option_1 option_2] [option_3] [option_4] [...]\nCreates a new poll with the specified name and options. If no options are specified, they will default to \"Yes\" and \"No\". If options are specified, there must be at least two specified options.\nSpaces are treated as delimiters between the name and each option. Underscores (\"_\") are treated as spaces.\n\nThese command options are also present:\n$PREFIX$poll view -> View a poll.\n$PREFIX$poll vote -> Vote an option of a poll.\n$PREFIX$poll close -> Close a poll.\n$PREFIX$poll timer -> Sets a timer to the last poll so it closes automatically.\n$PREFIX$poll purge -> Deletes polls from the system.\n\nTo view the manual for an option, use $PREFIX$help poll <option>",
+	"man_view":"Use: $PREFIX$poll view [pollNumber].\nSends a message with the poll number __pollNumber__, and deletes the last message on the channel that showed that poll.\nIf no __pollNumber__ is specified, the action will be performed over the last poll created.",
+	"man_vote":"Use: $PREFIX$poll vote <optionNumber> [pollNumber].\nAdds a vote to the option __optionNumber__ of the poll number __pollNumber__. The updated poll is sent, and the last message on the channel showing the poll is deleted.\nEach user can vote only once; voting another time will replace the previous vote.\nIf no __pollNumber__ is specified, the action will be performed over the last poll created.",
+	"man_close":"Use: $PREFIX$poll close [pollNumber].\nCloses a poll, making its options unvotable.\nIf no __pollNumber__ is specified, the action will be performed over the last poll created.",
+	"man_timer":"Use $PREFIX$poll timer <time>[d/h/m].\nAAdds a timer to the last poll created to be closed automatically.\nUsing a \"d\", \"h\" or \"m\" on the right side of the time, it's specified if we measure the time on days, hours or minutes, respectively. If no letter is written, it defaults to hours.\nExamples:\n$PREFIX$poll timer 5d -> Adds a timer to close the last poll in 5 days.\n$PREFIX$poll timer 0.5 -> Adds a timer to close the last poll in half an hour.",
+	"man_purge":"Use $PREFIX$poll purge [amount].\nDeletes from the system the last __amount__ of polls created. If no __amount__ is specified, ALL polls are deleted.\nThe messages containing those polls are NOT deleted from the server.\nThis command is intended to free disk space from the system the bot is running on."
+}

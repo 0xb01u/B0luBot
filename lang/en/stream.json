@@ -1,0 +1,8 @@
+{
+	"misuse":"use: $PREFIX$stream <user1> [&user2] [&user3] [...] [*description]",
+	"header":"We're live:\n",
+	"channel_not_config":"no streamings channel specified in the configuration.",
+	"channel_not_found":"configured streamings channel not found ($STREAM_CHANNEL$).",
+	"brief":"Sends a message to the streamings channel announcing a livestreaming from a specified user.",
+	"man":"Use: $PREFIX$stream. <user1> [&user2] [&user3] [...] [*description].\nSends a message to the streamings channel anouncing a Twitch livestreaming from the specified user(s). The __users__ to specify are the Twitch usernames of the ones going live. At least one user must be specified. The other specified users must start with the character \"&\" to be treated as such.\nA streaming description can be added after specifying the users. This description must start with the character \"*\" to be treated as such.\n\nExample: $PREFIX$stream ninja &trihex &gamesdonequick *The most ambitious crossover ever, now on Twitch!"
+}
