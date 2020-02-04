@@ -1,0 +1,7 @@
+{
+	"channel_not_config":"no info channel specified in the configuration.",
+	"channel_not_found":"configured info channel not found ($PRIV_INFO_CHANNEL$).",
+	"message_not_found":"configured info message not found.\nTo configure a message as an info message, it must start with the line \"INFO:\" and be pinned in the configured info channel.",
+	"brief":"Shows private server information.",
+	"man":"Use: $PREFIX$serverinfo\nShows private server information. This information must be manually configured.\nTo configure a private info message, a message starting with the line \"INFO:\" must be sent and pinned to the configured private info channel. The bot will send the contents below the \"INFO:\" line of that message to the channel the command was executed on.\nTo configure a private info channel, use $PREFIX$config priv_info_channel."
+}

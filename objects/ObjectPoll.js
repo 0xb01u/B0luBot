@@ -25,7 +25,7 @@ class Poll {
 		if (!this.open) throw "encuesta cerrada.";
 		if (option > this.options.length || option < 1) throw "opción inválida.";
 
-		// Remove the member's previous vite (if any).
+		// Remove the member's previous vote (if any).
 		for (let i = 0; i < this.votes.length; i++) {
 			let e = this.votes[i]
 			if (e.includes(member))

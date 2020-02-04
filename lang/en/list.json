@@ -1,0 +1,7 @@
+{
+	"public":"Public commands:",
+	"private":"Private commands:",
+	"admin":"Bot's manager's commands:",
+	"brief":"Shows the list of commands you can use.",
+	"man":"Use: $PREFIX$list.\nShows the list of commands you can use."
+}

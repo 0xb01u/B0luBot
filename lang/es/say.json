@@ -1,0 +1,7 @@
+{
+	"misuse":"uso: $PREFIX$say [#canal] <contenido>.",
+	"cahtchmsg":"error al enviar el mensaje.",
+	"channel_not_found":"no existe el canal especificado.",
+	"brief":"el bot envía un mensaje especificado a un canal.",
+	"man":"Uso: $PREFIX$say [#canal] <contenido>.\nEl bot borra el mensaje original y envía __contenido__ al canal __#canal__. El canal especificado debe empezar por \"#\". De no especificar __#canal__, se envia __contenido__ al canal en que se utilice el comando. Si el canal especificado no existe, se trata como parte de __contenido__.\n"
+}

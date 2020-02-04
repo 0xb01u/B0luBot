@@ -1,0 +1,13 @@
+{
+	"firstmsg":"$MEME_USER$ es el mejor",
+	"secondmsg":"$MEME_USER$ es lo más.",
+	"thirdmsg":"$MEME_USER$ es vida.",
+	"fourthmsg":"$MEME_USER$ es amor.",
+	"fifthmsg":"All hail $MEME_USER$.",
+	"sixthmsg":"Gracias por tanto, perdón por tan poco $MEME_USER$.",
+	"seventhmsg":"¿He dicho ya que $MEME_USER$ mola?",
+	"randomsg":"En realidad $RANDO$ es el mejor.",
+	"replymsg":"¡Tú sí que eres el mejor! $AUTHRO$.",
+	"brief":"Comando meme para atosigar a alguien con mensajes positivos.",
+	"man":"¿Alguna vez te has preguntado quién es el mejor?"
+}

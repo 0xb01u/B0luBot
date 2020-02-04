@@ -1,0 +1,5 @@
+{
+	"reply":"eres $AUTHOR$#$DISCRIMINATOR$, ID de Discord $ID$.",
+	"brief":"Te dice tu ID numérica de Discord.",
+	"man":"Uso: $PREFIX$whoami.\nTe dice tu ID numérica de Discord.\nLa ID se publicará en el canal en que se use el comando, así que cualquiera que esté ahí la podrá ver. Usar con cuidado."
+}

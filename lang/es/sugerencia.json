@@ -1,0 +1,6 @@
+{
+	"misuse":"uso: $PREFIX$sugerencia <sugerencia a enviar>.",
+	"msg":"$AUTHRO$#$DISCRIMINATOR ($ID$) sugiere:\n",
+	"brief":"Envía una sugerencia al administrador del bot.",
+	"man":"Uso: $PREFIX$sugerencia <sugerencia a enviar>.\nEnvía la sugerencia especificada al administrador del bot directamente. El mensaje original no se borra."
+}

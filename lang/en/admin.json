@@ -1,0 +1,9 @@
+{
+	"misuse":"use: $PREFIX$admin <message to send to the admins>.",
+	"botmsg":"@here, $AUTHOR$ says: $USER_MSG$",
+	"catchmsg":"error trying to send the message.",
+	"channel_not_config":"the admin channel isn't specified in the configuration.",
+	"channel_not_found":"couldn't find the configured admin channel ($ADMIN_CHANNEL$).",
+	"brief":"Sends a message to the admins' channel.",
+	"man":"Use: $PREFIX$admin <message to send to the admins>.\nThe bot will forward your message to the admins' channel and delete the original.\nThis command is intented to allow private communication with the admins. The message is NOT anonymous.\nUse with caution."
+}

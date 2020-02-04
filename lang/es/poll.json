@@ -1,0 +1,23 @@
+{
+	"misuse":"uso incorrecto. Usa $PREFIX$help poll para recibir ayuda sobre el comando.",
+	"noview":"no hay encuestas para ver.",
+	"misvote":"uso: $PREFIX$poll vote <númeroOpción> [númeroPoll]",
+	"novote":"no hay encuestas para votar.",
+	"noclose":"no hay encuestas para cerrar.",
+	"mistimer":"uso: $PREFIX$poll timer <tiempo>[d/h/m].",
+	"timerclosed":"la última encuesta ya está cerrada.",
+	"timerend":"Encuesta cerrada:",
+	"mispurge":"no se puede eliminar esa cantidad de encuestas.",
+	"purged":"Eliminadas las últimas $DELETED$ encuestas.",
+	"default1":"Sí",
+	"default2":"No",
+	"catchmsg":"error al acceder a las encuestas.",
+	"embedclosed":"[CERRADA]",
+	"brief":"Crea, vota y gestiona encuestas.", 
+	"man":"Uso: $PREFIX$poll <nombre de la encuesta> [opción1 opción2] [opción3] [opción4] [...]\nCrea una nueva encuesta con el nombre y las opciones especificadas. Si no se especifican opciones, se utilizarán por defecto \"Sí\" y \"No\". De especificarse opciones, como mínimo deben especificarse 2.\nLos espacios se interpretan como separadores entre el nombre y cada opción. Las barras bajas (\"_\") se interpretan como espacios.\n\nTambién existen los siguientes modos:\n$PREFIX$poll view -> Ve una encuesta.\n$PREFIX$poll vote -> Vota una opción en una encuesta.\n$PREFIX$poll close -> Cierra una encuesta.\n$PREFIX$poll timer -> Pone un temporizador a la última encuesta para cerrarse automáticamente.\n$PREFIX$poll purge -> Elmina encuestas del sistema.\n\nPara ver el manual de uno de estos modos, usar $PREFIX$poll <modo>",
+	"man_view":"Uso: $PREFIX$poll view [númeroEncuesta].\nEnvía un mensaje con la encuesta número __númeroEncuesta__, y borra el último mensaje del canal en el que apareciese esa encuesta.\nDe no especificar __númeroEncuesta__, la acción se aplicaría a la últíma encuesta creada.",
+	"man_vote":"Uso: $PREFIX$poll vote <númeroOpción> [númeroEncuesta].\nAñade un voto a la opción número __númeroOpción__ de la encuesta número __númeroEncuesta__. La encuesta se vuelve a mostrar, actualizada, y se borra el anterior mensaje del canal en el que apareciese la encuesta.\nCada usuario solo puede votar una vez; volver a votar anulará el anterior voto del usuario.\nDe no especificar __númeroEncuesta__, la acción se aplicaría a la últíma encuesta creada.",
+	"man_close":"Uso: $PREFIX$poll close [númeroEncuesta].\nCierra una encuesta, haciendo que ninguna opción de la misma pueda ser votada.\nDe no especificar __númeroEncuesta__, la acción se aplicaría a la últíma encuesta creada.",
+	"man_timer":"Uso $PREFIX$poll timer <tiempo>[d/h/m].\nAñade un temporizador a la última encuesta creada para ser cerrada automáticamente.\nPoniendo una \"d\", una \"h\" o una \"m\" pegada a la derecha del tiempo, especificamos si nos referimos a días, horas o minutos, respectivamente. De no poner ninguna de estas letras, el tiempo se interpretará como horas.\nEjemplos:\n$PREFIX$poll timer 5d -> Pone un temporizador para cerrar la última encuesta en 5 días.\n$PREFIX$poll timer 0.5 -> Pone un temporizador para cerrar la última encuesta en media hora.",
+	"man_purge":"Uso $PREFIX$poll purge [cantidad].\nElimina del sistema las últimas __cantidad__ de encuestas creadas. De no especificar __cantidad__, se eliminan TODAS las encuestas.\nLos mensajes del servidor enviados con dichas encuestas NO serán eliminados del servidor.\nEl propósito de este comando es liberar espacio del servidor en que se ejecuta el bot."
+}
