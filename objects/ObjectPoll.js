@@ -41,12 +41,6 @@ class Poll {
 	getVotes() {
 		return this.votes.reduce((a, b) => a.length + b.length);
 	}
-	// Votes for the most voted option.
-	getMaxVote() {
-		return Math.max(...this.votes.map(function(x) {
-			x.length;
-		}));
-	}
 
 	// Saves poll as a JSON file.
 	save() {
