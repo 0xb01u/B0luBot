@@ -29,7 +29,7 @@ class Poll {
 		for (let i = 0; i < this.votes.length; i++) {
 			let e = this.votes[i]
 			if (e.includes(member))
-				if (e.length = 1) this.votes[i] = [];
+				if (e.length == 1) this.votes[i] = [];
 				else this.votes.splice(this.votes.indexOf(member), 1);
 		}
 		// Update votes.
